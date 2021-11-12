@@ -10,7 +10,7 @@ import openpyxl
 # read from dataset
 data = pd.read_csv('dataset/marscrater_pds.csv', low_memory=False)
 
-# bug fix for display formats to avoid run time errors - put after code for loading data above
+# bug fix for display formats to avoid run time errors
 pd.set_option('display.float_format', lambda x:'%f'%x)
 
 print()
@@ -178,8 +178,16 @@ print()
 print('=========')
 print('Results: ')
 print('=========')
-data_frame_3 = pd.DataFrame(np.array(count_morphology_ejecta_3), index=count_morphology_ejecta_3.index, columns=['Frequency'])
-data_frame_4 = pd.DataFrame(np.array(percentages_morphology_ejecta_3 * 100), index=percentages_morphology_ejecta_3.index, columns=['Percentage'])
+data_frame_3 = pd.DataFrame(
+    np.array(count_morphology_ejecta_3),
+    index=count_morphology_ejecta_3.index,
+    columns=['Frequency']
+)
+data_frame_4 = pd.DataFrame(
+    np.array(percentages_morphology_ejecta_3 * 100),
+    index=percentages_morphology_ejecta_3.index,
+    columns=['Percentage']
+)
 output_morphology_ejecta_3 = pd.concat([data_frame_3, data_frame_4], axis=1)
 
 output_morphology_ejecta_3['Frequency'] = output_morphology_ejecta_3.Frequency.cumsum()
@@ -216,8 +224,16 @@ print()
 print('=========')
 print('Results: ')
 print('=========')
-data_frame_5 = pd.DataFrame(np.array(count_morphology_ejecta_2), index=count_morphology_ejecta_2.index, columns=['Frequency'])
-data_frame_6 = pd.DataFrame(np.array(percentages_morphology_ejecta_2 * 100), index=percentages_morphology_ejecta_2.index, columns=['Percentage'])
+data_frame_5 = pd.DataFrame(
+    np.array(count_morphology_ejecta_2),
+    index=count_morphology_ejecta_2.index,
+    columns=['Frequency']
+)
+data_frame_6 = pd.DataFrame(
+    np.array(percentages_morphology_ejecta_2 * 100),
+    index=percentages_morphology_ejecta_2.index,
+    columns=['Percentage']
+)
 output_morphology_ejecta_2 = pd.concat([data_frame_5, data_frame_6], axis=1)
 
 output_morphology_ejecta_2['Frequency'] = output_morphology_ejecta_2.Frequency.cumsum()
@@ -230,9 +246,29 @@ print()
 
 # creating an workbook
 excel_writer = pd.ExcelWriter('Mars_Craters_WorkBook_Assignment_2.xlsx')
-output_number_lawyers.to_excel(excel_writer, sheet_name='NUMBER_LAWYERS', float_format='%0.4f', startrow=1, startcol=0)
-output_morphology_ejecta_3.to_excel(excel_writer, sheet_name='MORPHOLOGY_EJECTA_3', na_rep='NAN', float_format='%0.4f', startrow=1, startcol=0)
-output_morphology_ejecta_2.to_excel(excel_writer, sheet_name='MORPHOLOGY_EJECTA_2', na_rep='NAN', float_format='%0.4f', startrow=1, startcol=0)
+output_number_lawyers.to_excel(
+    excel_writer,
+    sheet_name='NUMBER_LAWYERS',
+    float_format='%0.4f',
+    startrow=1,
+    startcol=0
+)
+output_morphology_ejecta_3.to_excel(
+    excel_writer,
+    sheet_name='MORPHOLOGY_EJECTA_3',
+    na_rep='NAN',
+    float_format='%0.4f',
+    startrow=1,
+    startcol=0
+)
+output_morphology_ejecta_2.to_excel(
+    excel_writer,
+    sheet_name='MORPHOLOGY_EJECTA_2',
+    na_rep='NAN',
+    float_format='%0.4f',
+    startrow=1,
+    startcol=0
+)
 excel_writer.save()
 
 wb = openpyxl.load_workbook('Mars_Craters_WorkBook_Assignment_2.xlsx')
