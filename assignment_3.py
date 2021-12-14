@@ -19,8 +19,8 @@ data['DIAM_CIRCLE_IMAGE'] = pandas.to_numeric(data['DIAM_CIRCLE_IMAGE'])
 data['DEPTH_RIMFLOOR_TOPOG'] = pandas.to_numeric(data['DEPTH_RIMFLOOR_TOPOG'])
 data['NUMBER_LAYERS'] = pandas.to_numeric(data['NUMBER_LAYERS'])
 
-# subset data with craters with diameter between 50 and 80 kms
-subset_1 = data[(data['DIAM_CIRCLE_IMAGE'] >= 50) & (data['DIAM_CIRCLE_IMAGE'] <= 80)]
+# subset data with craters with diameter between 0 and 100 kms
+subset_1 = data[(data['DIAM_CIRCLE_IMAGE'] > 0) & (data['DIAM_CIRCLE_IMAGE'] <= 100)]
 
 # make a copy of subsetted data
 subset_2 = subset_1.copy()
@@ -105,7 +105,7 @@ print()
 print('=============================')
 print('DIAM_CIRCLE_IMAGE - 3 groups:')
 print('=============================')
-subset_2['DIAM_CIRCLE_IMAGE_GROUP_3'] = pandas.cut(subset_2.DIAM_CIRCLE_IMAGE, [50, 60, 70, 80])
+subset_2['DIAM_CIRCLE_IMAGE_GROUP_3'] = pandas.cut(subset_2.DIAM_CIRCLE_IMAGE, [0, 30, 60, 100])
 count_5 = subset_2['DIAM_CIRCLE_IMAGE_GROUP_3'].value_counts(sort=False, dropna=True)
 print(count_5)
 print()
@@ -204,8 +204,8 @@ data_frame_1 = pandas.DataFrame(numpy.array(count_depth_group), index=count_dept
 data_frame_2 = pandas.DataFrame(numpy.array(percentages_depth_group * 100), index=percentages_depth_group.index.values, columns=['Percentage'])
 output_depth_group = pandas.concat([data_frame_1, data_frame_2], axis=1)
 
-output_depth_group['Frequency'] = output_depth_group.Frequency.cumsum()
-output_depth_group['Percentage'] = output_depth_group.Percentage.cumsum()
+output_depth_group['Frequency'] = output_depth_group.Frequency
+output_depth_group['Percentage'] = output_depth_group.Percentage
 
 output_depth_group.index.name = 'DEPTH_GROUP'
 print(output_depth_group)
@@ -216,7 +216,12 @@ print()
 # frequency distribution for variable DIAMETER_GROUP
 diameter = [i for i in range(0, 105, 5)]
 diameter_labels = ['{0} - {1}'.format(i, i+5) for i in range(0, 100, 5)]
-working_subset['DIAMETER_GROUP'] = pandas.cut(working_subset.DIAM_CIRCLE_IMAGE, bins=diameter, labels=diameter_labels, right=True)
+working_subset['DIAMETER_GROUP'] = pandas.cut(
+    working_subset.DIAM_CIRCLE_IMAGE,
+    bins=diameter,
+    labels=diameter_labels,
+    right=True
+)
 
 print()
 print('============================================')
@@ -243,8 +248,8 @@ data_frame_3 = pandas.DataFrame(numpy.array(count_diameter_group), index=count_d
 data_frame_4 = pandas.DataFrame(numpy.array(percentages_diameter_group * 100), index=percentages_diameter_group.index.values, columns=['Percentage'])
 output_diameter_group = pandas.concat([data_frame_3, data_frame_4], axis=1)
 
-output_diameter_group['Frequency'] = output_diameter_group.Frequency.cumsum()
-output_diameter_group['Percentage'] = output_diameter_group.Percentage.cumsum()
+output_diameter_group['Frequency'] = output_diameter_group.Frequency
+output_diameter_group['Percentage'] = output_diameter_group.Percentage
 
 output_diameter_group.index.name = 'DIAMETER_GROUP'
 print(output_diameter_group)
@@ -255,7 +260,8 @@ print()
 # frequency distribution for variable LATITUDE_GROUP
 latitude = [i for i in range(-90, 105, 15)]
 latitude_labels = ['{0} - {1}'.format(i, i+15) for i in range(-90, 90, 15)]
-working_subset['LATITUDE_GROUP'] = pandas.cut(working_subset.LATITUDE_CIRCLE_IMAGE, bins=latitude, labels=latitude_labels, right=True)
+working_subset['LATITUDE_GROUP'] = pandas.cut(working_subset.LATITUDE_CIRCLE_IMAGE, bins=latitude,
+                                              labels=latitude_labels, right=True)
 
 print()
 print('============================================')
@@ -282,8 +288,8 @@ data_frame_5 = pandas.DataFrame(numpy.array(count_latitude_group), index=count_l
 data_frame_6 = pandas.DataFrame(numpy.array(percentages_latitude_group * 100), index=percentages_latitude_group.index.values, columns=['Percentage'])
 output_latitude_group = pandas.concat([data_frame_5, data_frame_6], axis=1)
 
-output_latitude_group['Frequency'] = output_latitude_group.Frequency.cumsum()
-output_latitude_group['Percentage'] = output_latitude_group.Percentage.cumsum()
+output_latitude_group['Frequency'] = output_latitude_group.Frequency
+output_latitude_group['Percentage'] = output_latitude_group.Percentage
 
 output_latitude_group.index.name = 'LATITUDE_GROUP'
 print(output_latitude_group)
