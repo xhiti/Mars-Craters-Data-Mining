@@ -82,6 +82,7 @@ print()
 box_props = dict(linewidth=1.2)
 mean_point_props = dict(marker='D', markeredgecolor='black', markerfacecolor='firebrick')
 figure, ax = pyplot.subplots(figsize=(10, 12))
+
 figure = working_subset_3.boxplot(
     'DEPTH_RIMFLOOR_TOPOG',
     'MARS_REGION',
