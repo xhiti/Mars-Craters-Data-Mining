@@ -11,6 +11,12 @@
 7. Apply Data Visualization Concepts For PRACTICAL Data Analysis & Interpretation
 8. Use Plotly to make interactive line plots, area plots and scatterplots.
 
+
+## Data Analysis Tools
+
+### What we will do?
+
+
 Follow my posts for every assignment of these courses in Coursera.
 https://xhitii.tumblr.com/
 
