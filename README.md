@@ -13,4 +13,5 @@
 
 Follow my posts for every assignment of these courses in Coursera.
 https://xhitii.tumblr.com/
+
 In these posts i have the code, the description, output dhe output interpretation.
