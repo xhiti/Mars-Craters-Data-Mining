@@ -10,3 +10,6 @@
 6. Build POWERFUL Visualisations and Graphs from REAL DATA
 7. Apply Data Visualization Concepts For PRACTICAL Data Analysis & Interpretation
 8. Use Plotly to make interactive line plots, area plots and scatterplots.
+
+Follow my posts for every assignment of these courses in Coursera.
+https://xhitii.tumblr.com/
