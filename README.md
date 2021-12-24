@@ -1,5 +1,5 @@
 # Mars-Craters-Data-Mining
-## Data Manipulation and Visualisation
+## 1. Data Manipulation and Visualisation
 
 ### What we will do?
 1. Install and Get Started With the Python Data Science Environment- Anaconda (conda environment)
@@ -12,10 +12,13 @@
 8. Use Plotly to make interactive line plots, area plots and scatterplots.
 
 
-## Data Analysis Tools
+## 2. Data Analysis Tools
 
 ### What we will do?
-
+1. We will develop and test hypotheses about our data. 
+2. We will learn a variety of statistical tests, as well as strategies to know how to apply the appropriate one to our specific data and question. 
+3. We will explore ANOVA, Chi-Square, and Pearson correlation analysis. 
+4. We will guide through basic statistical principles.
 
 Follow my posts for every assignment of these courses in Coursera.
 https://xhitii.tumblr.com/
